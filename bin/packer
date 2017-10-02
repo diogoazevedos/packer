@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const { PPM } = require('compressjs');
+const { readFileSync, writeFileSync } = require('fs');
+
+program
+  .usage('-c|-x [input] [output]')
+  .option('-c, --compress', 'Compress the given input')
+  .option('-x, --extract', 'Extract the given input')
+  .arguments('<input> <output>')
+  .action((input, output) => {
+    const fileBuffer = readFileSync(input);
+
+    if (program.extract && program.compress) {
+      console.error('Must specify either -x or -c.');
+      return 1;
+    }
+
+    if (program.extract) {
+      writeFileSync(output, PPM.decompressFile(fileBuffer));
+      return 0;
+    }
+
+    writeFileSync(output, PPM.compressFile(fileBuffer));
+    return 0;
+  })
+  .parse(process.argv);
