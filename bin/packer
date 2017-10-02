@@ -18,11 +18,11 @@ program
     }
 
     if (program.extract) {
-      writeFileSync(output, encode(fileBuffer));
+      writeFileSync(output, decode(fileBuffer));
       return 0;
     }
 
-    writeFileSync(output, decode(fileBuffer));
+    writeFileSync(output, encode(fileBuffer));
     return 0;
   })
   .parse(process.argv);
