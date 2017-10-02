@@ -4,7 +4,8 @@
   "description": "A command line tool to compress and decompress files",
   "dependencies": {
     "commander": "2.11.*",
-    "compressjs": "1.0.*"
+    "compressjs": "1.0.*",
+    "node-lzw": "0.3.*"
   },
   "devDependencies": {
     "eslint": "^4.7.0",
