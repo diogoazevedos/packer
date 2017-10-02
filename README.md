@@ -1,6 +1,6 @@
 # Packer
 
-A command line tool to compress and decompress files
+A command line tool to compress and decompress files.
 
 ### Getting started
 
