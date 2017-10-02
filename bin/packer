@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const { PPM } = require('compressjs');
+const { encode, decode } = require('../');
 const { readFileSync, writeFileSync } = require('fs');
 
 program
@@ -18,11 +18,11 @@ program
     }
 
     if (program.extract) {
-      writeFileSync(output, PPM.decompressFile(fileBuffer));
+      writeFileSync(output, encode(fileBuffer));
       return 0;
     }
 
-    writeFileSync(output, PPM.compressFile(fileBuffer));
+    writeFileSync(output, decode(fileBuffer));
     return 0;
   })
   .parse(process.argv);
